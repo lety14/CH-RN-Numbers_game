@@ -6,6 +6,7 @@ import StartGame from "./screens/start-game";
 import { Header } from "./components/index";
 import GameScreen from "./screens/game-screen";
 import { ModalStartGame } from "./containers/modalStartGame";
+import GameOver from "./screens/game-over";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -14,6 +15,7 @@ export default function App() {
   const [userNumber, setUserNumber] = useState<number>(null);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [guessRounds, setGuessRounds] = useState<number>(0);
 
   const onSelectNumber = (number: number) => {
     setUserNumber(number);
@@ -21,6 +23,17 @@ export default function App() {
 
   const onStartGame = (startGame: boolean) => {
     setStartGame(startGame);
+    setIsOpenModal(false);
+  };
+
+  const onGameOver = (rounds: number) => {
+    setGuessRounds(rounds);
+  };
+
+  const onRestartGame = () => {
+    setStartGame(false);
+    setUserNumber(null);
+    setGuessRounds(0);
   };
 
   if (!loaded) {
@@ -45,8 +58,14 @@ export default function App() {
             />
           }
         </>
+      ) : guessRounds <= 0 && startGame ? (
+        <GameScreen userNumber={userNumber} onGameOver={onGameOver} />
       ) : (
-        <GameScreen userNumber={userNumber} />
+        <GameOver
+          userNumber={userNumber}
+          rounds={guessRounds}
+          onRestart={onRestartGame}
+        />
       )}
     </SafeAreaView>
   );

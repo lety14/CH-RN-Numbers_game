@@ -1,5 +1,11 @@
 import React, { FC, useState } from "react";
-import { Button, TouchableWithoutFeedback, View, Keyboard } from "react-native";
+import {
+  Button,
+  TouchableWithoutFeedback,
+  View,
+  Keyboard,
+  Image,
+} from "react-native";
 import { CustomInput } from "../../components/index";
 import { styles } from "./styles";
 import colors from "../../constants/colors";
