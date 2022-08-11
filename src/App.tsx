@@ -1,16 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 import { styles } from "./App.styles";
 import StartGame from "./screens/start-game";
 import { Header } from "./components/index";
+import GameScreen from "./screens/game-screen";
+import { ModalStartGame } from "./containers/modalStartGame";
 
 export default function App() {
-  let content = <StartGame />;
+  const [userNumber, setUserNumber] = useState<number>(null);
+  // const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
+  const [startGame, setStartGame] = useState<boolean>(false);
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
+  const onSelectNumber = (number: number) => {
+    setUserNumber(number);
+  };
+
+  const handleConfirm = () => {
+    setIsOpenModal(true);
+  };
+
+  const onStartGame = (startGame: boolean) => {
+    setStartGame(startGame);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Adivina el numero" />
-      {content}
+      {startGame === false ? (
+        <>
+          <StartGame
+            handleConfirm={() => setIsOpenModal(true)}
+            onSelectNumber={onSelectNumber}
+          />
+          {
+            <ModalStartGame
+              modalVisible={isOpenModal}
+              setModalVisible={() => setIsOpenModal(false)}
+              number={userNumber}
+              onStartGame={onStartGame}
+            />
+          }
+        </>
+      ) : (
+        <GameScreen userNumber={userNumber} />
+      )}
     </SafeAreaView>
   );
 }
