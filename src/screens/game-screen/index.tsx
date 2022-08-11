@@ -18,7 +18,7 @@ const GameScreen: FC<Props> = ({ userNumber }) => {
   return (
     <View style={styles.screen}>
       <Card style={styles.card}>
-        <Text>La suposicion del oponente</Text>
+        <Text style={styles.text}>La suposicion del oponente</Text>
         <NumberContainer number={currentNumber} />
         <View style={styles.buttonContainer}>
           <Button title="Menor" color={colors.primary} onPress={() => null} />

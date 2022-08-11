@@ -1,3 +1,4 @@
+import { useFonts } from "expo-font";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native";
 import { styles } from "./App.styles";
@@ -7,6 +8,9 @@ import GameScreen from "./screens/game-screen";
 import { ModalStartGame } from "./containers/modalStartGame";
 
 export default function App() {
+  const [loaded] = useFonts({
+    IBMPlexMonoRegular: require("../assets/fonts/IBMPlexMono-Regular.ttf"),
+  });
   const [userNumber, setUserNumber] = useState<number>(null);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -18,6 +22,10 @@ export default function App() {
   const onStartGame = (startGame: boolean) => {
     setStartGame(startGame);
   };
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <SafeAreaView style={styles.container}>

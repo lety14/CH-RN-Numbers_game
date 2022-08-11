@@ -21,15 +21,8 @@ export const ModalStartGame: FC<Props> = ({
     <CustomModal animationType="fade" modalVisible={modalVisible}>
       <View style={styles.modal}>
         <View style={styles.modalContentContainer}>
-          <Text style={styles.modalTitle}>Detalle de la lista</Text>
-        </View>
-        <View style={styles.modalContentContainer}>
-          <Text style={styles.modalMessage}>
-            ¿Estás seguro que deseas eliminar?
-          </Text>
-        </View>
-        <View style={styles.modalContentContainer}>
-          <Text style={styles.modalItem}>{number}</Text>
+          <Text style={styles.modalTitle}>Tu selección:</Text>
+          <Text style={styles.number}>{number}</Text>
         </View>
         <View style={styles.modalButton}>
           <Button

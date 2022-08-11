@@ -10,7 +10,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    fontSize: 20,
+    fontFamily: "IBMPlexMonoRegular",
+    fontSize: 25,
     color: colors.text,
   },
 });

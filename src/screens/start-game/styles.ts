@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import colors from "../../constants/colors";
+const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingVertical: 80,
+    paddingVertical: height > 800 ? 80 : 30,
   },
   buttonContainer: {
     marginHorizontal: 20,
@@ -13,15 +14,12 @@ export const styles = StyleSheet.create({
     justifyContent: "space-around",
     marginTop: 20,
   },
-  button: {
-    backgroundColor: "none",
-    color: colors.black,
-  },
   card: {
     justifyContent: "center",
     marginHorizontal: 30,
     paddingVertical: 30,
     marginBottom: 20,
     borderRadius: 20,
+    minHeight: 200,
   },
 });
