@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.background,
     paddingVertical: 80,
   },
-  //
   buttonContainer: {
     marginHorizontal: 20,
     flexDirection: "row",
@@ -23,5 +22,6 @@ export const styles = StyleSheet.create({
     marginHorizontal: 30,
     paddingVertical: 30,
     marginBottom: 20,
+    borderRadius: 20,
   },
 });

@@ -8,16 +8,11 @@ import { ModalStartGame } from "./containers/modalStartGame";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState<number>(null);
-  // const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
   const [startGame, setStartGame] = useState<boolean>(false);
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const onSelectNumber = (number: number) => {
     setUserNumber(number);
-  };
-
-  const handleConfirm = () => {
-    setIsOpenModal(true);
   };
 
   const onStartGame = (startGame: boolean) => {
@@ -38,7 +33,7 @@ export default function App() {
               modalVisible={isOpenModal}
               setModalVisible={() => setIsOpenModal(false)}
               number={userNumber}
-              onStartGame={onStartGame}
+              onStartGame={() => onStartGame(true)}
             />
           }
         </>
